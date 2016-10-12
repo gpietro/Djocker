@@ -13,7 +13,7 @@ log = logging.getLogger(__name__)
 @app.task
 def sec3(job_id, reply_channel):
     # time sleep represent some long running process
-    time.sleep(3)
+    time.sleep(10)
     # Change task status to completed
     job = Job.objects.get(pk=job_id)
     log.debug("Running job_name=%s", job.name)

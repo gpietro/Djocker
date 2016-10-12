@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
     'channels',
     'jobs',
 ]
@@ -120,14 +121,14 @@ CHANNEL_LAYERS = {
    "default": {
        "BACKEND": "asgi_redis.RedisChannelLayer",  # use redis backend
        "CONFIG": {
-           "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],  # set redis address
+           "hosts": [os.environ.get('REDIS_URL', 'redis://redis:6379')],  # set redis address
        },
        "ROUTING": "example.routing.channel_routing",  # load routing from our routing.py file
    },
 }
 
 # Celery settings
-BROKER_URL = 'redis://localhost:6379/0'  # our redis address
+BROKER_URL = 'amqp://guest:guest@rabbitmq:5672//'  # our redis address
 # use json format for everything
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
