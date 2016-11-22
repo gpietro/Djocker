@@ -4,7 +4,9 @@ This project shows how to setup a Django Channels project with a Celery task que
 
 To run this project you will need to install Docker and run this command from the project directory:
 
-docker-compose up
+```
+  docker-compose up
+```
 
 ## How to Send Reply Back to Browser Client
 The code block below shows how to send a reply back to the browser that originated the task request. `message.reply_channel.name` contains a unique address in the form of `websocket.send!hjnsMbQPiefT`.
