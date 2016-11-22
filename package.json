@@ -1,0 +1,24 @@
+{
+  "name": "django-channels-celery-example",
+  "version": "1.0.0",
+  "description": "This project shows how to setup a Django Channels project with a Celery task queue. The user can start a long running background task and get immediate notification when the task completes without a browser refresh.",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gpietro/django-channels-celery-docker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gpietro/django-channels-celery-docker/issues"
+  },
+  "homepage": "https://github.com/gpietro/django-channels-celery-docker#readme"
+}
