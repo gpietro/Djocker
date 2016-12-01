@@ -1,7 +1,16 @@
-var React = require('react')
+import React from 'react'
+import { Row, Col } from 'react-bootstrap'
+import AddTodo from '../containers/AddTodo'
+import VisibileTodoList from '../containers/VisibileTodoList'
 
-module.exports = React.createClass({
-   render: function(){
-       return <h1>Hello, world.</h1>
-   }
-})
+const App = () => (
+  <Row>
+    <Col xs={12}>
+        <AddTodo />
+        <VisibileTodoList />
+        <Footer />
+    </Col>
+  </Row>
+)
+
+export default App
