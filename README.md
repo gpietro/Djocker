@@ -5,6 +5,7 @@ This project shows how to setup a Django Channels project with a Celery task que
 To run this project you will need to install Docker and run this command from the project directory:
 
 ```
+  docker-compose build
   docker-compose up
 ```
 

@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'debug_toolbar',
     'channels',
+    'webpack_loader',
     'jobs',
 ]
 
@@ -113,8 +114,21 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "assets"),
     os.path.join(BASE_DIR, "static"),
 ]
+
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'CACHE': not DEBUG,
+        'POLL_INTERVAL': 0.1,
+        'TIMEOUT': None,
+        'IGNORE': ['.+\.hot-update.js', '.+\.map'],
+        'BUNDLE_DIR_NAME': 'bundles/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json')
+    }
+}
 
 # Channels settings
 CHANNEL_LAYERS = {
@@ -128,7 +142,7 @@ CHANNEL_LAYERS = {
 }
 
 # Celery settings
-BROKER_URL = 'amqp://guest:guest@rabbitmq:5672//'  # our redis address
+BROKER_URL = 'amqp://guest:guest@rabbitmq:5672//'
 # use json format for everything
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
