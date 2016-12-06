@@ -1,14 +1,16 @@
 import React from 'react'
 import { Row, Col } from 'react-bootstrap'
 import AddTodo from '../containers/AddTodo'
-import VisibileTodoList from '../containers/VisibileTodoList'
+import VisibileTodoList from '../containers/VisibleTodoList'
+import Footer from './Footer'
 
-const App = () => (
+
+const App = ({ params }) => (
   <Row>
     <Col xs={12}>
-        <AddTodo />
-        <VisibileTodoList />
-        <Footer />
+      <AddTodo />
+      <VisibileTodoList filter={params.filter || 'all'} />
+      <Footer />
     </Col>
   </Row>
 )

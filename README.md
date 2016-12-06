@@ -7,5 +7,12 @@ To run this project you will need to install Docker and run this command from th
 
 ```
   docker-compose build
-  docker-compose up
+  docker-compose up -d
+  npm run dev
+```
+
+To stop all containers run this command from the project directory:
+
+```
+  docker-compose stop
 ```
