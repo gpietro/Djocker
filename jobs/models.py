@@ -14,3 +14,8 @@ class Job(models.Model):
 
     def __unicode__(self):
         return self.name
+
+
+class Task(models.Model):
+    text = models.CharField(max_length=40)
+    completed = models.NullBooleanField()

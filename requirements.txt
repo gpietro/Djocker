@@ -9,7 +9,9 @@ channels==0.17.0
 daphne==0.14.2
 Django==1.9.8
 django-debug-toolbar==1.5
+django-filter==1.0.1
 django-webpack-loader==0.4.1
+djangorestframework==3.5.3
 kombu==3.0.35
 msgpack-python==0.4.7
 pytz==2016.6.1

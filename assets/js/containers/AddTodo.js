@@ -7,7 +7,7 @@ let AddTodo = ({ dispatch }) => {
 
   return (
     <div>
-      <h1>Todo list</h1>
+      <h1>Todo list...</h1>
       <form onSubmit={e => {
         e.preventDefault()
         if (!input.value.trim()) {
