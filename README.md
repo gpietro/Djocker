@@ -1,18 +1,25 @@
 # Dockerized Django boilerplate
 
-This project shows how to setup a Dockerized Django Channels project with a Celery task queue.
-The frontend in React.js. JS dependencies are handled with django-webpack-loader.
+This is a django base project with this main features:
+- Admin panel (django admin)
+- Auth with social (django all auth)
+- Rest API (django-rest-framework)
+- Websocket (django-channels and redis)
+- Background task (celery and rabbitmq)
+- Dependecies handler (webpack)
+- Modern js client (react.js, es6,...)
+- Hot reload
 
-To run this project you will need to install Docker and run this command from the project directory:
-
+For a better developing environment the project is dockerized.
+To run it do the execute the following commands:
 ```
-  docker-compose build
+  docker build
   docker-compose up -d
-  npm run dev
+  node server.js
 ```
 
-To stop all containers run this command from the project directory:
 
+And to stop the process:
 ```
   docker-compose stop
 ```
