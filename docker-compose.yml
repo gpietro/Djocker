@@ -18,6 +18,12 @@ services:
       - db
       - rabbitmq
       - redis
+  webpack:
+    build:
+      context: .
+      dockerfile: Dockerfile.webpack
+    volumes:
+      - webpack:/webpack/
   web:
     build:
       context: .
@@ -25,9 +31,14 @@ services:
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
+      - ./node_modules:/webpack/node_modules
+      - ./assets/bundles:/webpack/assets/bundles
     ports:
       - "8000:8000"
     links:
       - db
       - rabbitmq
       - redis
+volumes:
+  webpack:
+    driver: local

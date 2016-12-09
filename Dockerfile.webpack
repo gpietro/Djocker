@@ -1,0 +1,9 @@
+from node:latest
+
+WORKDIR /webpack
+COPY . /webpack
+
+RUN npm install webpack -g
+RUN npm install
+
+CMD webpack --watch --watch-polling
