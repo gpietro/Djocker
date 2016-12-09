@@ -15,7 +15,6 @@ To run it do the execute the following commands:
 ```
   docker build
   docker-compose up -d
-  node server.js
 ```
 
 
