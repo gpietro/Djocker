@@ -10,7 +10,9 @@ services:
       - "5672:5672"  # we forward this port because it's useful for debugging
       - "15672:15672"  # here, we can access rabbitmq management plugin
   worker:
-    build: .
+    build:
+      context: .
+      dockerfile: docker/webapp
     command: celery worker -A example -l info
     volumes:
       - .:/code
@@ -21,24 +23,20 @@ services:
   webpack:
     build:
       context: .
-      dockerfile: Dockerfile.webpack
-    volumes:
-      - webpack:/webpack/
-  web:
+      dockerfile: docker/webpack
+    volumes_from:
+      - webapp:rw
+
+  webapp:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: docker/webapp
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
-      - ./node_modules:/webpack/node_modules
-      - ./assets/bundles:/webpack/assets/bundles
     ports:
       - "8000:8000"
     links:
       - db
       - rabbitmq
       - redis
-volumes:
-  webpack:
-    driver: local
