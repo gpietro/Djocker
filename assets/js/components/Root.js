@@ -1,8 +1,23 @@
 import React from 'react'
-import { Provider } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { Provider, connect } from 'react-redux'
+import { push } from 'react-router-redux'
 import { BrowserRouter, Link, Match, Miss, withRouter } from 'react-router'
 import App from './app'
 import LoginPage from '../containers/LoginPage'
+import * as actions from '../actions'
+
+const mapStateToProps = (state) => (
+    state
+)
+
+const mapDispatchToProps = (dispatch) => bindActionCreators(
+    {
+        push,
+        ...actions
+    },
+    dispatch
+);
 
 const Root = ({ store }) => (
   <Provider store={store}>
@@ -29,6 +44,5 @@ const NotFound = ({ location }) => (
     <h3>No match for <code>{location.pathname}</code></h3>
   </div>
 )
-
 
 export default Root

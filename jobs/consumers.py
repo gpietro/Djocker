@@ -1,8 +1,10 @@
+from django.core import serializers
 import json
 import logging
 from channels import Channel
 from channels.sessions import channel_session
-from .models import Job
+from .models import Job, Task
+from .serializers import TaskSerializer
 from .tasks import sec3
 from example.celery import app
 
@@ -13,8 +15,8 @@ log = logging.getLogger(__name__)
 def ws_connect(message):
     message.reply_channel.send({
         "text": json.dumps({
-            "action": "reply_channel",
-            "reply_channel": message.reply_channel.name,
+            "type": "INIT_TODO",
+            "todos": TaskSerializer(Task.objects.all(), many=True).data,
         })
     })
 

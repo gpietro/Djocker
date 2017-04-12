@@ -11,6 +11,8 @@ module.exports = {
       './assets/js/index'
   ],
 
+  devtool: 'source-map',
+
   output: {
       path: path.resolve('./assets/bundles/'),
       filename: "[name]-[hash].js",
@@ -21,6 +23,9 @@ module.exports = {
     // new webpack.HotModuleReplacementPlugin(),
     // new webpack.NoErrorsPlugin(), // don't reload if there is an error
     new BundleTracker({filename: './webpack-stats.json'}),
+    new webpack.DefinePlugin({
+        __DEV__: true
+    })
   ],
 
   module: {

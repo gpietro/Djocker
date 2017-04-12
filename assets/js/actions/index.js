@@ -1,6 +1,12 @@
 import { v4 } from 'node-uuid'
 
 // Actions Creator
+export const initTodo = (todos) => {
+  return {
+    type: 'INIT_TODO',
+    todos
+  }
+}
 
 export const addTodo = (text) => {
   return {
