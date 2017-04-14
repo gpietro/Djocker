@@ -32,8 +32,8 @@ class App extends Component {
       <Row>
         <Col xs={12}>
           <AddTodo />
-          <VisibileTodoList filter={params.filter || 'all'} />
-          <Footer />
+          {/*<VisibileTodoList filter={params.filter || 'all'} />*/}
+          {/*<Footer />*/}
         </Col>
       </Row>
     )

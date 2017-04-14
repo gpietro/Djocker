@@ -6,6 +6,7 @@ from channels.sessions import channel_session
 from .models import Job, Task
 from .serializers import TaskSerializer
 from .tasks import sec3
+from .signals import dispatcher
 from example.celery import app
 
 log = logging.getLogger(__name__)
@@ -25,15 +26,17 @@ def ws_connect(message):
 def ws_receive(message):
     try:
         data = json.loads(message['text'])
+        print('data %s' % data)
+        dispatcher.send(sender=None, action='ADD_TODO', payload=dict(text='ciao'))
     except ValueError:
         log.debug("ws message isn't json text=%s", message['text'])
         return
 
-    if data:
+    '''if data:
         reply_channel = message.reply_channel.name
 
         if data['action'] == "start_sec3":
-            start_sec3(data, reply_channel)
+            start_sec3(data, reply_channel)'''
 
 
 def start_sec3(data, reply_channel):

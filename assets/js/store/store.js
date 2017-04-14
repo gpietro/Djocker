@@ -9,7 +9,15 @@ import WebsocketBridge from '../utils/WebsocketBridge'
 
 const router = routerMiddleware(hashHistory)
 
-let middlewares = [thunk, router]
+const actionsToExclude = ['INIT_TODO']
+const notify = store => next => action => {
+    if( !actionsToExclude.includes(action.type) ) {
+        WebsocketBridge.send({ ...action })
+    }
+    return next(action)
+}
+
+let middlewares = [thunk, router, notify]
 
 if( process.env.NODE_ENV !== 'production' ) {
     middlewares.push(createLogger())
