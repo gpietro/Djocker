@@ -19,3 +19,6 @@ class Job(models.Model):
 class Task(models.Model):
     text = models.CharField(max_length=40)
     completed = models.NullBooleanField()
+
+    def __str__(self):
+        return self.text

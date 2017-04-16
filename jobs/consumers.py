@@ -26,8 +26,7 @@ def ws_connect(message):
 def ws_receive(message):
     try:
         data = json.loads(message['text'])
-        print('data %s' % data)
-        dispatcher.send(sender=None, action='ADD_TODO', payload=dict(text='ciao'))
+        dispatcher.send(sender=None, action=data['type'], payload=dict(text=data['text']))
     except ValueError:
         log.debug("ws message isn't json text=%s", message['text'])
         return
