@@ -26,17 +26,17 @@ services:
       dockerfile: docker/webpack
     volumes_from:
       - webapp:rw
-
   webapp:
     build:
       context: .
       dockerfile: docker/webapp
+    entrypoint: /docker-entrypoint.sh
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
     ports:
       - "8000:8000"
     links:
-      - db
+      - db  
       - rabbitmq
       - redis

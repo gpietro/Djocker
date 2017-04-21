@@ -10,5 +10,6 @@ env
 
 node_modules
 assets/bundles
+example/static
 
 webpack-stats.json
