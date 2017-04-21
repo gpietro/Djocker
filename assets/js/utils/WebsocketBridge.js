@@ -29,13 +29,12 @@ const WebsocketBridge = {
 
     listen: (store) => {
         _socket.onmessage = (event) => {
-            const action = JSON.parse(event.data);
+            const action = JSON.parse(event.data);            
             receiveSocketMessage(store, action);
         }
 
         _socket.onopen = () => {
             const state = store.getState();
-
             if (state.currentUser !== null) {
                 // the connection was dropped. Call the recovery logic
                 reconnect(state);

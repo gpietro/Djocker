@@ -17,7 +17,7 @@ def ws_connect(message):
     message.reply_channel.send({
         "text": json.dumps({
             "type": "INIT_TODO",
-            "todos": TaskSerializer(Task.objects.all(), many=True).data,
+            "payload": TaskSerializer(Task.objects.all(), many=True).data,
         })
     })
 
@@ -26,16 +26,18 @@ def ws_connect(message):
 def ws_receive(message):
     try:
         data = json.loads(message['text'])
-        dispatcher.send(sender=None, action=data['type'], payload=dict(text=data['text']))
+        print(message.reply_channel.name)
     except ValueError:
         log.debug("ws message isn't json text=%s", message['text'])
         return
 
-    '''if data:
-        reply_channel = message.reply_channel.name
-
-        if data['action'] == "start_sec3":
-            start_sec3(data, reply_channel)'''
+    if data:
+        dispatcher.send(
+            sender=None, 
+            action=data['type'], 
+            payload=dict(text=data['text']),
+            reply_channel=message.reply_channel.name
+        )
 
 
 def start_sec3(data, reply_channel):
