@@ -7,13 +7,16 @@ MAINTAINER Pietro Ghezzi
 RUN mkdir /code
 WORKDIR /code
 
+ADD . /code/
+
 # add requirements.txt to the image
-ADD ./requirements.txt /code/
+# ADD ./requirements.txt /code/
 
 # install python dependencies
 RUN pip install -r requirements.txt
 
-ADD . /code/
-
 # Port to expose
 EXPOSE 8000
+
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
