@@ -1,5 +1,6 @@
 import { v4 } from 'node-uuid'
 
+
 // Actions Creator
 export const initTodo = (todos) => {
   return {
@@ -12,7 +13,8 @@ export const addTodo = (text) => {
   return {
     type: 'ADD_TODO',
     id: v4(),
-    text
+    text,
+    completed: false
   }
 }
 

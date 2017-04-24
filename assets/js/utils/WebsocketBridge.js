@@ -29,7 +29,8 @@ const WebsocketBridge = {
 
     listen: (store) => {
         _socket.onmessage = (event) => {
-            const action = JSON.parse(event.data);            
+            const action = JSON.parse(event.data);
+            console.log('event', event)
             receiveSocketMessage(store, action);
         }
 

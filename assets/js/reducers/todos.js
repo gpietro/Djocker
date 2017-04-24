@@ -6,11 +6,15 @@ const initialState = []
 const todos = (state = initialState, action) => {
   switch (action.type) {
     case 'INIT_TODO':
-      return action.payload || []
+      return action.todos || []
     case 'ADD_TODO':
       return [
         ...state,
-        action.payload
+        { 
+          id: action.id,
+          text: action.text,
+          completed: action.completed
+        }
       ]
     default:
       return state
