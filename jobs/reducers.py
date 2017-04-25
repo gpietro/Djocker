@@ -16,6 +16,10 @@ def remove_todo(payload):
     Task.objects.get(pk=payload['id']).delete()
 
 
+def complete_todo(payload):
+    Task.objects.get(pk=payload['id']).update(completed=True)
+
+
 reducer_actions = {
     actions.ADD_TODO: add_todo,
     actions.REMOVE_TODO: remove_todo

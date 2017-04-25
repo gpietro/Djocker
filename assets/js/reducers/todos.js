@@ -16,6 +16,9 @@ const todos = (state = initialState, action) => {
           completed: action.completed
         }
       ]
+    case 'REMOVE_TODO':
+      return state.filter( task => task.id !== action.id )
+      
     default:
       return state
   }

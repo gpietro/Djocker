@@ -30,7 +30,6 @@ const WebsocketBridge = {
     listen: (store) => {
         _socket.onmessage = (event) => {
             const action = JSON.parse(event.data);
-            console.log('localstorage', localStorage.channelId, 'channel id', action.channelId)
             if( localStorage.channelId !== action.channelId ) {
                 receiveSocketMessage(store, action);
             }

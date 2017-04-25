@@ -26,13 +26,17 @@ class App extends Component {
 
   render() {
 
-    const { params, todos } = this.props
+    const { 
+      params, 
+      todos,
+      removeTodo
+     } = this.props
 
     return (
       <Row>
         <Col xs={12}>
           <AddTodo />
-          <TodoList todos={todos} onTodoClick={()=>{}}/>
+          <TodoList todos={todos} onTodoClick={removeTodo}/>
           {/*<VisibileTodoList filter={params.filter || 'all'} />*/}
           {/*<Footer />*/}
         </Col>
