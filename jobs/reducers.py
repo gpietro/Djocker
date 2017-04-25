@@ -5,7 +5,6 @@ from . import actions
 
 
 def add_todo(payload):
-    print('....payload %s' % payload )
     Task.objects.create(        
         id=payload['id'], 
         text=payload['text'], 
@@ -33,7 +32,8 @@ def reducer(sender, **kwargs):
         Group("todo_app").send({
             "text": json.dumps({
                 "type": action,
-                "done": True,                
+                "done": True,
+                "channelId": reply_channel,
                 **payload
             })
         })

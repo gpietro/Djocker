@@ -27,7 +27,6 @@ class App extends Component {
   render() {
 
     const { params, todos } = this.props
-    console.log('todos', todos)
 
     return (
       <Row>

@@ -18,6 +18,7 @@ def ws_connect(message):
         "text": json.dumps({
             "type": "INIT_TODO",
             "todos": TaskSerializer(Task.objects.all(), many=True).data,
+            "channelId": message.reply_channel.name
         })
     })
     Group("todo_app").add(message.reply_channel)
@@ -27,8 +28,6 @@ def ws_connect(message):
 def ws_receive(message):
     try:
         data = json.loads(message['text'])
-        log.debug('ciao pippo')
-        log.debug(message.reply_channel.name)
     except ValueError:
         log.debug("ws message isn't json text=%s", message['text'])
         return

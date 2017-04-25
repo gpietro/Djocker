@@ -11,6 +11,9 @@ const router = routerMiddleware(hashHistory)
 
 const actionsToExclude = ['INIT_TODO']
 const notify = store => next => action => {
+    if( action.type === 'INIT_TODO' ) {
+        localStorage.setItem('channelId', action.channelId)
+    }
     if( !actionsToExclude.includes(action.type) && !action.done ) {
         WebsocketBridge.send({ ...action })
     }
