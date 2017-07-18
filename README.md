@@ -1,5 +1,7 @@
 # Dockerized Django boilerplate
 
+## Work in progress...
+
 This is a django base project with this main features:
 - Admin panel (django admin)
 - Auth with social (django all auth)
